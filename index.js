@@ -35,7 +35,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 //initiating express server
-app.listen('8000', (err) => {
+const port = process.env.PORT
+app.listen(port || '8000', (err) => {
     if (err) {
         return new Error('Server failed to run');
     }
