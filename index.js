@@ -3,7 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 // const data = require('./data');
-// const model = require('./schema/schema').headPhone
+// const model = require('./schema/schema').game
 
 const app = express();
 app.use(cors());
