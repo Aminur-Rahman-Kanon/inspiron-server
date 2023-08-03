@@ -12,9 +12,9 @@ const allProducts = {
 }
 
 const allProductsModel = mongoose.model('allProducts', allProducts);
-const popularProductsModel = mongoose.model('allProducts', allProducts);
-const newArrivalModel = mongoose.model('allProducts', allProducts);
-const onSaleModel = mongoose.model('allProducts', allProducts);
+const popularProductsModel = mongoose.model('popularProducts', allProducts);
+const newArrivalModel = mongoose.model('newArrival', allProducts);
+const onSaleModel = mongoose.model('onSale', allProducts);
 const smartPhone = mongoose.model('smartphones', allProducts);
 const laptop = mongoose.model('laptops', allProducts);
 const game = mongoose.model('games', allProducts);
