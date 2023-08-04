@@ -3,7 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 // const data = require('./data');
-// const model = require('./schema/schema').game
+// const model = require('./schema/schema').smartWatch
 
 const app = express();
 app.use(cors());
@@ -14,6 +14,7 @@ mongoose.connect(process.env.MONGO_URI, {
 }).then(res => console.log('database is connected')).catch(err => console.log(err));
 
 
+//temporary data writing code
 // data.map(async item => await model.create({
 //     title: item.title,
 //     rating: item.rating,
