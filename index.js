@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-app.use(cors({ origin: 'https://inspiron-server-9gmf.onrender.com' }));
+app.use(cors());
 
 //importing routes
 const allProductsRoute = require('./routes/fetchProducts');
