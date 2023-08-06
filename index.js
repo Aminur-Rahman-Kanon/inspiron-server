@@ -2,11 +2,15 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
-// const data = require('./data');
-// const model = require('./schema/schema').smartWatch
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: 'https://inspiron-server-9gmf.onrender.com' }));
+
+//importing routes
+const allProductsRoute = require('./routes/fetchProducts');
+
+
+app.use('/products/:productType', allProductsRoute);
 
 //initiating mongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
@@ -25,7 +29,6 @@ mongoose.connect(process.env.MONGO_URI, {
 //     img: item.img,
 //     about: item.about
 // }).then(res => console.log(res)).catch(err => console.log(err)));
-
 
 
 //staticaly serving the public folder
