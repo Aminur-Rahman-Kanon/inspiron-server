@@ -8,15 +8,18 @@ app.use(cors());
 
 //importing routes
 const allProductsRoute = require('./routes/fetchProducts');
+const fetchTestimonial = require('./routes/fetchTestimonial');
+const postTestimonial = require('./routes/postTestimonial');
 
 
 app.use('/products/:productType', allProductsRoute);
+app.use('/get-testimonial', fetchTestimonial);
+app.use('/post-testimonial', postTestimonial);
 
 //initiating mongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true, useUnifiedTopology: true 
 }).then(res => console.log('database is connected')).catch(err => console.log(err));
-
 
 //temporary data writing code
 // data.map(async item => await model.create({
@@ -29,7 +32,6 @@ mongoose.connect(process.env.MONGO_URI, {
 //     img: item.img,
 //     about: item.about
 // }).then(res => console.log(res)).catch(err => console.log(err)));
-
 
 //staticaly serving the public folder
 app.use(express.static('public'));

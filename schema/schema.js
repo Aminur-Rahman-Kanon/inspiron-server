@@ -11,6 +11,13 @@ const allProducts = {
     about: String
 }
 
+const testimonial = {
+    name: {type: String, required: true},
+    title: {type: String, required: true},
+    comment: {type: String, required: true},
+    img: {type: String, required: true}
+}
+
 const allProductsModel = mongoose.model('allProducts', allProducts);
 const popularProductsModel = mongoose.model('popularProducts', allProducts);
 const newArrivalModel = mongoose.model('newArrival', allProducts);
@@ -23,6 +30,8 @@ const tablet = mongoose.model('tablets', allProducts);
 const tv = mongoose.model('tv', allProducts);
 const smartWatch = mongoose.model('watches', allProducts);
 
+const testimonials = mongoose.model('testimonial', testimonial);
+
 module.exports = {
     allProductsModel,
     popularProductsModel,
@@ -34,5 +43,6 @@ module.exports = {
     game,
     headPhone,
     tablet,
-    tv
+    tv,
+    testimonials
 }
