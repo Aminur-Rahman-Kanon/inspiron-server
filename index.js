@@ -10,13 +10,13 @@ app.use(cors());
 const allProductsRoute = require('./routes/fetchProducts');
 const fetchTestimonial = require('./routes/fetchTestimonial');
 const postTestimonial = require('./routes/postTestimonial');
-const productCategory = require('./routes/getProductCategory');
+const categorizedProduct = require('./routes/fetchCategorizedProduct');
 
 
-app.use('/products/:productType', allProductsRoute);
+app.use('/products/initial-product', allProductsRoute);
 app.use('/get-testimonial', fetchTestimonial);
 app.use('/post-testimonial', postTestimonial);
-app.use('/shop/:category', productCategory);
+app.use('/shop/:category', categorizedProduct);
 
 //initiating mongoDB connection
 mongoose.connect(process.env.MONGO_URI, {

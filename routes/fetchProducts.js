@@ -1,28 +1,25 @@
 const express = require('express');
-const router = express.Router({ mergeParams: true });
-const productsModel = require('../schema/schema');
+const router = express.Router();
+const allProductsModel = require('../schema/schema').allProductsModel;
+const popularProductsModel = require('../schema/schema').popularProductsModel;
+const newArrivalsModel = require('../schema/schema').newArrivalModel;
+const onSaleModel = require('../schema/schema').onSaleModel;
+
 
 router.get('/', async (req, res) => {
-    const params = req.params.productType;
+    const all = await allProductsModel.find({}).then(result => result).catch(err => err);
+    const popular = await popularProductsModel.find({}).then(result => result).catch(err => err);
+    const onSale = await onSaleModel.find({}).then(result => result).catch(err => err);
+    const newArrivals = await newArrivalsModel.find({}).then(result => result).catch(err => err);
 
-    switch (params){
-        case 'all-products':
-            const all = await productsModel.allProductsModel.find({}).then(result => result);
-            const popular = await productsModel.popularProductsModel.find({}).then(result => result);
-            const onSale = await productsModel.onSaleModel.find({}).then(result => result);
-            const newArrivals = await productsModel.newArrivalModel.find({}).then(result => result);
-            const data = {
-                allProducts: all,
-                popularProducts: popular,
-                newArrivals: newArrivals,
-                onSale: onSale
-            };
+    const data = {
+        allProducts: all,
+        popularProducts: popular,
+        newArrivals: newArrivals,
+        onSale: onSale
+    };
 
-            return res.json({ status: 'success', data });
-
-        default:
-            return res.status(500);
-    }
+    return res.json({ status: 'success', data });
 })
 
 module.exports = router;
