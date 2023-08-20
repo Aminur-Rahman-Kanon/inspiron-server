@@ -7,16 +7,20 @@ const onSaleModel = require('../schema/schema').onSaleModel;
 
 
 router.get('/', async (req, res) => {
+    const deviceId = req.socket.remoteAddress
     const all = await allProductsModel.find({}).then(result => result).catch(err => err);
     const popular = await popularProductsModel.find({}).then(result => result).catch(err => err);
     const onSale = await onSaleModel.find({}).then(result => result).catch(err => err);
     const newArrivals = await newArrivalsModel.find({}).then(result => result).catch(err => err);
 
     const data = {
-        allProducts: all,
-        popularProducts: popular,
-        newArrivals: newArrivals,
-        onSale: onSale
+        deviceId,
+        products: {
+            allProducts: all,
+            popularProducts: popular,
+            newArrivals: newArrivals,
+            onSale: onSale
+        }
     };
 
     return res.json({ status: 'success', data });
