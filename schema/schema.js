@@ -18,6 +18,11 @@ const testimonial = {
     img: {type: String, required: true}
 }
 
+const cart = {
+    deviceId: {type: String, required: true},
+    product: {type: Object, required: true}
+}
+
 const allProductsModel = mongoose.model('allProducts', allProducts);
 const popularProductsModel = mongoose.model('popularProducts', allProducts);
 const newArrivalModel = mongoose.model('newArrival', allProducts);
@@ -29,8 +34,8 @@ const headPhone = mongoose.model('headphones', allProducts);
 const tablet = mongoose.model('tablets', allProducts);
 const tv = mongoose.model('tv', allProducts);
 const smartWatch = mongoose.model('watches', allProducts);
-
 const testimonials = mongoose.model('testimonial', testimonial);
+const cartModel = mongoose.model('cart', cart);
 
 module.exports = {
     allProductsModel,
@@ -44,5 +49,6 @@ module.exports = {
     headPhone,
     tablet,
     tv,
-    testimonials
+    testimonials,
+    cartModel
 }

@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 app.set("trust proxy", true);
 
 //importing routes
@@ -12,12 +13,16 @@ const allProductsRoute = require('./routes/fetchProducts');
 const fetchTestimonial = require('./routes/fetchTestimonial');
 const postTestimonial = require('./routes/postTestimonial');
 const categorizedProduct = require('./routes/fetchCategorizedProduct');
+const fetchCartItem = require('./routes/fetchCartItem');
+const addToCart = require('./routes/addToCart');
 
 
 app.use('/products/initial-product', allProductsRoute);
 app.use('/get-testimonial', fetchTestimonial);
 app.use('/post-testimonial', postTestimonial);
 app.use('/shop/:category', categorizedProduct);
+app.use('/fetch-cart-item', fetchCartItem);
+app.use('/add-to-cart', addToCart);
 
 //initiating mongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
