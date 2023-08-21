@@ -7,7 +7,7 @@ const onSaleModel = require('../schema/schema').onSaleModel;
 
 
 router.get('/', async (req, res) => {
-    const deviceId = req.socket.remoteAddress
+    const deviceId = req.ip;
     const all = await allProductsModel.find({}).then(result => result).catch(err => err);
     const popular = await popularProductsModel.find({}).then(result => result).catch(err => err);
     const onSale = await onSaleModel.find({}).then(result => result).catch(err => err);

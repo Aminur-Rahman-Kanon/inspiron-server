@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors());
+app.set("trust proxy", true);
 
 //importing routes
 const allProductsRoute = require('./routes/fetchProducts');
